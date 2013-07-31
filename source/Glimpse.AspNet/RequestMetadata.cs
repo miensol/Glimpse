@@ -34,7 +34,10 @@ namespace Glimpse.AspNet
 
         public string IpAddress
         {
-            get { throw new NotImplementedException("Need to implement this IP logic"); }
+            get
+            {
+                throw new NotImplementedException("Need to implement this IP logic");
+            }
         }
 
         public bool RequestIsAjax
@@ -45,6 +48,11 @@ namespace Glimpse.AspNet
                 return IsRequestedWithXmlHttpRequest(request.QueryString) ||
                     IsRequestedWithXmlHttpRequest(request.Headers);
             }
+        }
+
+        private static bool IsRequestedWithXmlHttpRequest(NameValueCollection collection)
+        {
+            return collection["X-Requested-With"] == "XMLHttpRequest";
         }
 
         public string ClientId
@@ -86,11 +94,6 @@ namespace Glimpse.AspNet
         public string GetHttpHeader(string name)
         {
             return Context.Request.Headers.Get(name);
-        }
-
-        private static bool IsRequestedWithXmlHttpRequest(NameValueCollection collection)
-        {
-            return collection["X-Requested-With"] == "XMLHttpRequest";
         }
     }
 }
