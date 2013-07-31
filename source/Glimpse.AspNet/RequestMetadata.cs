@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Web;
 using Glimpse.Core.Framework;
 
@@ -31,12 +32,9 @@ namespace Glimpse.AspNet
             get { return Context.Response.ContentType; }
         }
 
-        public string IpAddress 
-        { 
-            get
-            {
-                throw new NotImplementedException("Need to implement this IP logic");
-            }
+        public string IpAddress
+        {
+            get { throw new NotImplementedException("Need to implement this IP logic"); }
         }
 
         public bool RequestIsAjax
@@ -44,27 +42,17 @@ namespace Glimpse.AspNet
             get
             {
                 var request = Context.Request;
-
-                if (request["X-Requested-With"] == "XMLHttpRequest")
-                {
-                    return true;
-                }
-
-                if (request.Headers != null)
-                {
-                    return request.Headers["X-Requested-With"] == "XMLHttpRequest";
-                }
-
-                return false;
+                return IsRequestedWithXmlHttpRequest(request.QueryString) ||
+                    IsRequestedWithXmlHttpRequest(request.Headers);
             }
         }
 
-        public string ClientId 
-        { 
+        public string ClientId
+        {
             get
             {
                 string user = Context.User.Identity.Name;
-                
+
                 if (!string.IsNullOrEmpty(user))
                 {
                     return user;
@@ -98,6 +86,11 @@ namespace Glimpse.AspNet
         public string GetHttpHeader(string name)
         {
             return Context.Request.Headers.Get(name);
+        }
+
+        private static bool IsRequestedWithXmlHttpRequest(NameValueCollection collection)
+        {
+            return collection["X-Requested-With"] == "XMLHttpRequest";
         }
     }
 }
