@@ -52,7 +52,7 @@ namespace Glimpse.AspNet
 
         private static bool IsRequestedWithXmlHttpRequest(NameValueCollection collection)
         {
-            return collection["X-Requested-With"] == "XMLHttpRequest";
+            return collection != null && collection["X-Requested-With"] == "XMLHttpRequest";
         }
 
         public string ClientId
