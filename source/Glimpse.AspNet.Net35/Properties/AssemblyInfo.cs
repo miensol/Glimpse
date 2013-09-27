@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Glimpse.Core.Extensibility;
 
@@ -15,8 +16,9 @@ using Glimpse.Core.Extensibility;
 
 // Version is in major.minor.build format to support http://semver.org/
 // Keep these three attributes in sync
-[assembly: AssemblyVersion("1.3.1")]
-[assembly: AssemblyFileVersion("1.3.1")]
-[assembly: AssemblyInformationalVersion("1.3.1")]
+[assembly: AssemblyVersion("1.4.1")]
+[assembly: AssemblyFileVersion("1.4.1")]
+[assembly: AssemblyInformationalVersion("1.4.1")]
 
-[assembly: NuGetPackage]
+[assembly: InternalsVisibleTo("Glimpse.Test.AspNet")]
+[assembly: NuGetPackage("Glimpse.AspNet")]

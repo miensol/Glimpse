@@ -15,12 +15,11 @@
         <summary>Glimpse tabs for ADO.</summary>
         <releaseNotes>
 Flyweight release for Ado:
- - Fix error calling what could occur when binding DataReader's to controls
- - Made GlimpseDbDataAdapter public to allow it to be accessed in different cases
+ - Switched GlimpseDbTransaction over to be public
         </releaseNotes>
         <tags>ASP.NET Web WebForms Glimpse ADO ADO.NET SQL performance profiling timing diagnostics</tags>
         <dependencies>
-          <dependency id="Glimpse" version="1.4.0" />
+          <dependency id="Glimpse" version="1.6.1" />
         </dependencies>
     </metadata>
     <files>

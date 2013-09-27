@@ -14,13 +14,14 @@
         <description>Glimpse is a web debugging and diagnostics tool used to gain a better understanding of whats happening inside of your ASP.NET 4.0 application. For ASP.NET MVC3 support, please NuGet Glimpse.MVC3.</description>
         <summary>ASP.NET 4.0 web debugging and diagnostics tool.</summary>
         <releaseNotes>
-Bantamweight release for Asp.Net:
- - Remove styling from URL column in Route tab
- - Added defensive try/catch around some system call in Environment call to be more defensive
+Lightweight release for Asp.Net:
+ - Removed IpAddress as its not used anywhere 
+ - Fixed possible null refernce exception when access clientId
+ - Removed unused AspNet.Net35 Net35Backport
         </releaseNotes>
         <tags>ASP.NET Web WebForms Glimpse</tags>
         <dependencies>
-          <dependency id="Glimpse" version="1.4.2" />
+          <dependency id="Glimpse" version="1.6.1" />
         </dependencies>
     </metadata>
     <files>
@@ -32,6 +33,5 @@ Bantamweight release for Asp.Net:
         <!--<file src="readme.txt" target="readme.txt" />-->
         <file src="..\..\Glimpse.AspNet\**\*.cs" target="src" />
         <file src="..\..\Glimpse.AspNet\Resources.resx" target="src" />
-        <file src="..\..\Glimpse.AspNet.Net35\Backport\Net35Backport.cs" target="src" />
     </files>
 </package>
